@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="200" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g>
+        <!-- Bird Symbol -->
+        <path d="M120 40 C90 40, 60 60, 50 100 C40 140, 60 160, 90 160 C120 160, 140 140, 150 100 L180 160 L200 160 L160 80 L140 40 Z" fill="#FF69B4"/>
+        <path d="M90 100 C90 120, 100 140, 120 140 C140 140, 150 120, 150 100 C150 80, 140 60, 120 60 C100 60, 90 80, 90 100" fill="#4169E1"/>
+        <!-- WinniCode Text -->
+        <text x="220" y="120" font-family="Arial, sans-serif" font-size="80" font-weight="bold">
+            <tspan fill="#FF69B4">Winni</tspan><tspan fill="#4169E1">Code</tspan>
+        </text>
+        <!-- Garuda Teknologi Text -->
+        <text x="220" y="160" font-family="Arial, sans-serif" font-size="40">GARUDA TEKNOLOGI</text>
+    </g>
+</svg> 
