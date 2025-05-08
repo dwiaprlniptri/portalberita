@@ -31,9 +31,9 @@ INSERT INTO berita (title, slug, content, image_url, id_kategori, id_user, statu
 -- Insert sample comments
 INSERT INTO comment (id_berita, id_user, comment) VALUES
 (1, 1, 'Artikel yang sangat informatif! Saya tertarik dengan perkembangan AI di Indonesia.'),
-(1, 1, 'Bagaimana dampak AI terhadap lapangan kerja di Indonesia?'),
-(2, 1, 'Selamat untuk Timnas Indonesia! Prestasi yang membanggakan.'),
-(2, 1, 'Semoga bisa berlanjut ke kualifikasi Piala Dunia.'),
-(3, 1, 'Sistem pendidikan memang perlu direformasi untuk meningkatkan kualitas SDM Indonesia.'),
-(4, 1, 'Tips yang sangat bermanfaat, terutama untuk generasi muda yang banyak menghabiskan waktu di media sosial.'),
-(5, 1, 'Pertumbuhan ekonomi yang positif ini harus dipertahankan dan ditingkatkan.'); 
+(1, 2, 'Bagaimana dampak AI terhadap lapangan kerja di Indonesia?'),
+(2, 3, 'Selamat untuk Timnas Indonesia! Prestasi yang membanggakan.'),
+(2, 4, 'Semoga bisa berlanjut ke kualifikasi Piala Dunia.'),
+(3, 5, 'Sistem pendidikan memang perlu direformasi untuk meningkatkan kualitas SDM Indonesia.'),
+(4, 6, 'Tips yang sangat bermanfaat, terutama untuk generasi muda yang banyak menghabiskan waktu di media sosial.'),
+(5, 7, 'Pertumbuhan ekonomi yang positif ini harus dipertahankan dan ditingkatkan.'); 

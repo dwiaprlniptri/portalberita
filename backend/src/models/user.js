@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const News = require('./news');
+const Comment = require('./comment');
 
 const User = sequelize.define('User', {
     id_user: {
@@ -46,5 +48,11 @@ const User = sequelize.define('User', {
 User.prototype.checkPassword = async function(password) {
     return password === this.password;
 };
+
+User.hasMany(News, { foreignKey: 'id_user', as: 'news' });
+News.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
+
+User.hasMany(Comment, { foreignKey: 'id_user', as: 'comments' });
+Comment.belongsTo(User, { foreignKey: 'id_user', as: 'user' });
 
 module.exports = User;
