@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Input Berita</title>
+  <link rel="stylesheet" href="inputberita.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h2>Tambah Berita Baru</h2>
+    <form>
+      <div class="form-group">
+        <label for="judul">Judul Berita</label>
+        <input type="text" id="judul" name="judul" placeholder="Masukkan judul berita" required />
+      </div>
+
+      <div class="form-group">
+        <label for="gambar">Unggah Gambar</label>
+        <input type="file" id="gambar" name="gambar" accept="image/*" />
+      </div>
+
+      <div class="form-group">
+        <label for="isi">Isi Berita</label>
+        <textarea id="isi" name="isi" placeholder="Tulis isi berita di sini..." rows="6" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Kirim Berita</button>
+    </form>
+  </div>
+</body>
+</html>

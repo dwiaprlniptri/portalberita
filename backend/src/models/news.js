@@ -1,8 +1,9 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Comment = require('./comment')
 
 const News = sequelize.define('News', {
-    id_berita: {
+    id_news: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -21,7 +22,7 @@ const News = sequelize.define('News', {
         allowNull: false
     },
     image_url: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.STRING,
         allowNull: true
     },
     status: {
@@ -32,15 +33,18 @@ const News = sequelize.define('News', {
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    id_kategori: {
+    id_category: {
         type: DataTypes.INTEGER,
         allowNull: true
     }
 }, {
-    tableName: 'berita',
+    tableName: 'news',
     timestamps: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at'
 });
+
+News.hasMany(Comment, { foreignKey: 'id_news', as: 'comment' });
+Comment.belongsTo(News, { foreignKey: 'id_news', as: 'news' });
 
 module.exports = News; 

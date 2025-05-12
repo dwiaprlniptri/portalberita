@@ -8,8 +8,8 @@ exports.getAllNews = async (req, res) => {
         const news = await News.findAll({
             where: { status: 'published' },
             include: [
-                { model: User, as: 'author', attributes: ['id_user', 'username'] },
-                { model: Category, as: 'kategori', attributes: ['id_kategori', 'nama_kategori', 'slug'] }
+                { model: User, as: 'user', attributes: ['id_user', 'username'] },
+                { model: Category, as: 'category', attributes: ['id_category', 'name_category', 'slug'] }
             ],
             order: [['created_at', 'DESC']]
         });
@@ -28,8 +28,8 @@ exports.getNewsBySlug = async (req, res) => {
                 status: 'published'
             },
             include: [
-                { model: User, as: 'author', attributes: ['id_user', 'username'] },
-                { model: Category, as: 'kategori', attributes: ['id_kategori', 'nama_kategori', 'slug'] }
+                { model: User, as: 'user', attributes: ['id_user', 'username'] },
+                { model: Category, as: 'category', attributes: ['id_category', 'name_category', 'slug'] }
             ]
         });
         
@@ -48,8 +48,8 @@ exports.getAllNewsAdmin = async (req, res) => {
     try {
         const news = await News.findAll({
             include: [
-                { model: User, as: 'author', attributes: ['id_user', 'username'] },
-                { model: Category, as: 'kategori', attributes: ['id_kategori', 'nama_kategori', 'slug'] }
+                { model: User, as: 'user', attributes: ['id_user', 'username'] },
+                { model: Category, as: 'category', attributes: ['id_category', 'name_category', 'slug'] }
             ],
             order: [['created_at', 'DESC']]
         });
@@ -62,14 +62,14 @@ exports.getAllNewsAdmin = async (req, res) => {
 // Create news
 exports.createNews = async (req, res) => {
     try {
-        const { title, content, id_kategori, image_url, status } = req.body;
+        const { title, content, id_category, image_url, status } = req.body;
         const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         
         const news = await News.create({
             title,
             slug,
             content,
-            id_kategori,
+            id_category,
             image_url,
             status,
             id_user: req.user.id_user
@@ -84,7 +84,7 @@ exports.createNews = async (req, res) => {
 // Update news
 exports.updateNews = async (req, res) => {
     try {
-        const { title, content, id_kategori, image_url, status } = req.body;
+        const { title, content, id_category, image_url, status } = req.body;
         const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         
         const news = await News.findByPk(req.params.id);
@@ -96,7 +96,7 @@ exports.updateNews = async (req, res) => {
             title,
             slug,
             content,
-            id_kategori,
+            id_category,
             image_url,
             status
         });

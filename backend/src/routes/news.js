@@ -8,16 +8,16 @@ const {
     updateNews,
     deleteNews
 } = require('../controllers/newsController');
-const { auth, adminOnly } = require('../middleware/auth');
+const { user, adminOnly } = require('../middleware/user');
 
 // Public routes
 router.get('/', getAllNews);
 router.get('/:slug', getNewsBySlug);
 
 // Protected routes
-router.get('/admin/all', auth, adminOnly, getAllNewsAdmin);
-router.post('/', auth, createNews);
-router.put('/:id', auth, updateNews);
-router.delete('/:id', auth, deleteNews);
+router.get('/admin/all', user, adminOnly, getAllNewsAdmin);
+router.post('/', user, createNews);
+router.put('/:id', user, updateNews);
+router.delete('/:id', user, deleteNews);
 
 module.exports = router; 

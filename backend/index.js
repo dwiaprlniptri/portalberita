@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 
-const authRoutes = require('./src/routes/auth');
+const userRoutes = require('./src/routes/user');
 const newsRoutes = require('./src/routes/news');
-const categoryRoutes = require('./src/routes/categories');
-const commentRoutes = require('./src/routes/comments');
+const categoryRoutes = require('./src/routes/category');
+const commentRoutes = require('./src/routes/comment');
 const sequelize = require('./src/config/database'); // <- Tambahkan ini
 
 const app = express();
@@ -16,10 +16,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/news', newsRoutes);
-app.use('/api/categories', categoryRoutes);
-app.use('/api/comments', commentRoutes);
+app.use('/api/category', categoryRoutes);
+app.use('/api/comment', commentRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

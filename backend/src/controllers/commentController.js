@@ -2,17 +2,17 @@ const Comment = require('../models/comment');
 const User = require('../models/user');
 const News = require('../models/news');
 
-// Get comments for a news
-exports.getNewsComments = async (req, res) => {
+// Get comment for a news
+exports.getNewsComment = async (req, res) => {
     try {
-        const comments = await Comment.findAll({
-            where: { id_berita: req.params.newsId },
+        const comment = await Comment.findAll({
+            where: { id_news: req.params.newsId },
             include: [
                 { model: User, as: 'user', attributes: ['id_user', 'username'] }
             ],
             order: [['created_at', 'DESC']]
         });
-        res.json(comments);
+        res.json(comment);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -21,10 +21,10 @@ exports.getNewsComments = async (req, res) => {
 // Create comment
 exports.createComment = async (req, res) => {
     try {
-        const { id_berita, comment } = req.body;
+        const { id_news, comment } = req.body;
         
         const newComment = await Comment.create({
-            id_berita,
+            id_news,
             id_user: req.user.id_user,
             comment
         });
@@ -83,18 +83,21 @@ exports.deleteComment = async (req, res) => {
     }
 };
 
-// Get all comments (admin)
-exports.getAllComments = async (req, res) => {
+// Get all comments (public or admin)
+exports.getAllComment = async (req, res) => {
     try {
-        const comments = await Comment.findAll({
+        const comment = await Comment.findAll({
             include: [
                 { model: User, as: 'user', attributes: ['id_user', 'username'] },
-                { model: News, as: 'berita', attributes: ['id_berita', 'title', 'slug'] }
+                { model: News, as: 'news', attributes: ['id_news', 'title', 'slug'] }
             ],
             order: [['created_at', 'DESC']]
         });
-        res.json(comments);
+        res.json(comment);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-}; 
+};
+
+
+

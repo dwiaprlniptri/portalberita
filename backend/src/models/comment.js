@@ -1,5 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const News = require('./news');
+const User = require('./user');
 
 const Comment = sequelize.define('Comment', {
     id_comment: {
@@ -15,7 +17,7 @@ const Comment = sequelize.define('Comment', {
         type: DataTypes.INTEGER,
         allowNull: true
     },
-    id_berita: {
+    id_news: {
         type: DataTypes.INTEGER,
         allowNull: false
     }

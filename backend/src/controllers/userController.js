@@ -1,11 +1,12 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 // Register new user
 exports.register = async (req, res) => {
     try {
         const { username, email, password } = req.body;
-        const user = await User.create({ username, email, password });
+        const user = await User.create({ username, email, password: bcrypt.hashSync(password, 10) });
 
         // Generate token setelah user berhasil dibuat
         const token = jwt.sign(
@@ -24,7 +25,6 @@ exports.register = async (req, res) => {
                 id: user.id_user,
                 username: user.username,
                 email: user.email,
-                password: user.password,
                 role: user.role
             },
             token
@@ -40,9 +40,10 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
         const user = await User.findOne({ where: { email } });
 
-        if (!user || !(await user.checkPassword(password))) {
+        if (!user || !bcrypt.compare(password, user.password)) {
             return res.status(401).json({ message: 'Invalid email or password' });
-        }
+          }
+          
 
         // Generate new token
         const token = jwt.sign(
@@ -61,7 +62,6 @@ exports.login = async (req, res) => {
                 id: user.id_user,
                 username: user.username,
                 email: user.email,
-                password: user.password,
                 role: user.role
             },
             token
@@ -77,7 +77,18 @@ exports.getCurrentUser = async (req, res) => {
         id: req.user.id_user,
         username: req.user.username,
         email: req.user.email,
-        password: req.user.password,
         role: req.user.role
     });
+};
+
+// Get all users
+exports.getAllUsers = async (req, res) => {
+    try {
+        const users = await User.findAll({
+            attributes: ['id_user', 'username', 'email', 'role', 'created_at', 'updated_at'] 
+        });
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 };
