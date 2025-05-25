@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="berita.css">
 </head>
-<body class="about-page">
+<body class="about-page" onload="ambilSemua()">
     <header class="transparent-navbar" style="background: rgba(29, 50, 68, 0.7);">
         <nav class="main-nav">
             <div class="logo">
                 <a href="index.html">
-                    <img src="WinniCode.png" alt="Winni Code">
+                    <img src="img/WinniCode.png" alt="Winni Code">
                 </a>
             </div>
             <div class="nav-links">
@@ -25,7 +25,7 @@
     </header>
 
     <main style="margin-top: 90px;">
-        <section class="hero-section hero-home news-hero" style="background-image: url('Frame 44.png');">
+        <section class="hero-section hero-home news-hero" style="background-image: url('img/Frame 44.png');">
             <div class="hero-content">
                 <h1>Berita Terkini</h1>
                 <p>Berita aktual dari berbagai kategori, dikemas informatif dan akurat</p>
@@ -56,8 +56,8 @@
             <div class="container">
                 <h2>Berita Populer</h2>
                 <div class="news-grid">
-                    <div class="featured-news">
-                        <img src="images/cultural-dance.jpg" alt="Tarian Tradisional">
+                    <div id="news-terbaru" class="featured-news">
+                        <img src="img/cultural-dance.jpg" alt="Tarian Tradisional">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="news-list">
                         <div class="news-item">
-                            <img src="images/cultural-festival.jpg" alt="Festival Budaya">
+                            <img src="img/cultural-festival.jpg" alt="Festival Budaya">
                             <div class="news-content">
                                 <span class="date">Maret 25, 2024</span>
                                 <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="news-item">
-                            <img src="images/cultural-dance.jpg" alt="Tarian Tradisional">
+                            <img src="img/cultural-dance.jpg" alt="Tarian Tradisional">
                             <div class="news-content">
                                 <span class="date">Maret 25, 2024</span>
                                 <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="news-item">
-                            <img src="images/cultural-festival.jpg" alt="Festival Budaya">
+                            <img src="img/cultural-festival.jpg" alt="Festival Budaya">
                             <div class="news-content">
                                 <span class="date">Maret 25, 2024</span>
                                 <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -99,7 +99,7 @@
                 <h2>Berita Terbaru</h2>
                 <div class="news-grid">
                     <article class="news-card">
-                        <img src="images/cultural-festival.jpg" alt="Festival Budaya">
+                        <img src="img/cultural-festival.jpg" alt="Festival Budaya">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -107,7 +107,7 @@
                         </div>
                     </article>
                     <article class="news-card">
-                        <img src="images/cultural-dance.jpg" alt="Tarian Tradisional">
+                        <img src="img/cultural-dance.jpg" alt="Tarian Tradisional">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -115,7 +115,7 @@
                         </div>
                     </article>
                     <article class="news-card">
-                        <img src="images/umbrella-street.jpg" alt="Jalan Payung">
+                        <img src="img/umbrella-street.jpg" alt="Jalan Payung">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -123,7 +123,7 @@
                         </div>
                     </article>
                     <article class="news-card">
-                        <img src="images/cultural-festival.jpg" alt="Festival Budaya">
+                        <img src="img/cultural-festival.jpg" alt="Festival Budaya">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -131,7 +131,7 @@
                         </div>
                     </article>
                     <article class="news-card">
-                        <img src="images/umbrella-street.jpg" alt="Jalan Payung">
+                        <img src="img/umbrella-street.jpg" alt="Jalan Payung">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -139,7 +139,7 @@
                         </div>
                     </article>
                     <article class="news-card">
-                        <img src="images/cultural-festival.jpg" alt="Festival Budaya">
+                        <img src="img/cultural-festival.jpg" alt="Festival Budaya">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -147,7 +147,7 @@
                         </div>
                     </article>
                     <article class="news-card">
-                        <img src="images/cultural-dance.jpg" alt="Tarian Tradisional">
+                        <img src="img/cultural-dance.jpg" alt="Tarian Tradisional">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -155,7 +155,7 @@
                         </div>
                     </article>
                     <article class="news-card">
-                        <img src="images/holi-festival.jpg" alt="Festival Holi">
+                        <img src="img/holi-festival.jpg" alt="Festival Holi">
                         <div class="news-content">
                             <span class="date">Maret 25, 2024</span>
                             <h3>Warisan Budaya Nusantara di Tengah Modernisasi</h3>
@@ -171,8 +171,8 @@
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logos">
-                    <img src="WinniCode.png" alt="Winni Code" class="footer-logo">
-                    <img src="kampusmerdeka.png" alt="Kampus Merdeka" class="footer-logo">
+                    <img src="img/WinniCode.png" alt="Winni Code" class="footer-logo">
+                    <img src="img/kampusmerdeka.png" alt="Kampus Merdeka" class="footer-logo">
                 </div>
                 <p>Jurnalistik Program winnicode adalah program pengembangan sumber daya manusia yang ditujukan bagi pemuda pemudi yang berkarir di dunia report.</p>
             </div>
@@ -216,4 +216,5 @@
       });
     });
     </script>
+    <script src="berita.js" ></script>
 </body>

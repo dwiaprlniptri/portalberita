@@ -24,125 +24,40 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCategoryNews(category);
 });
 
-function loadCategoryNews(category) {
-    // Sample news data
-    const newsData = {
-        'budaya': [
-            {
-                image: 'images/cultural-dance.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Warisan Budaya Nusantara di Tengah Modernisasi',
-                description: 'Melestarikan tradisi dan kearifan lokal agar tetap hidup di era digital'
-            },
-            {
-                image: 'images/cultural-festival.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Festival Budaya Tradisional 2024',
-                description: 'Melestarikan tradisi dan kearifan lokal agar tetap hidup di era digital'
-            }
-        ],
-        'pendidikan': [
-            {
-                image: 'images/education1.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Inovasi Pendidikan di Era Digital',
-                description: 'Mengembangkan metode pembelajaran yang adaptif dengan teknologi'
-            },
-            {
-                image: 'images/education2.jpg',
-                date: 'Maret 24, 2024',
-                title: 'Program Pendidikan Berkualitas untuk Semua',
-                description: 'Memastikan akses pendidikan yang merata di seluruh wilayah'
-            }
-        ],
-        'politik': [
-            {
-                image: 'images/politics1.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Perkembangan Politik Terkini',
-                description: 'Mengikuti dinamika politik nasional dan internasional'
-            },
-            {
-                image: 'images/politics2.jpg',
-                date: 'Maret 24, 2024',
-                title: 'Kebijakan Baru untuk Kesejahteraan',
-                description: 'Program-program pemerintah untuk kemajuan bangsa'
-            }
-        ],
-        'fashion': [
-            {
-                image: 'images/fashion1.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Tren Fashion Terkini 2024',
-                description: 'Mengikuti perkembangan mode dan gaya terbaru'
-            },
-            {
-                image: 'images/fashion2.jpg',
-                date: 'Maret 24, 2024',
-                title: 'Fashion Berkelanjutan',
-                description: 'Inovasi fashion yang ramah lingkungan'
-            }
-        ],
-        'fenomena-alam': [
-            {
-                image: 'images/nature1.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Fenomena Alam Unik di Indonesia',
-                description: 'Mengamati keajaiban alam nusantara'
-            },
-            {
-                image: 'images/nature2.jpg',
-                date: 'Maret 24, 2024',
-                title: 'Perubahan Iklim dan Dampaknya',
-                description: 'Memahami perubahan lingkungan global'
-            }
-        ],
-        'teknologi': [
-            {
-                image: 'images/tech1.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Inovasi Teknologi Terbaru',
-                description: 'Perkembangan teknologi yang mengubah masa depan'
-            },
-            {
-                image: 'images/tech2.jpg',
-                date: 'Maret 24, 2024',
-                title: 'AI dan Masa Depan Teknologi',
-                description: 'Memahami dampak kecerdasan buatan'
-            }
-        ],
-        'olahraga': [
-            {
-                image: 'images/sports1.jpg',
-                date: 'Maret 25, 2024',
-                title: 'Prestasi Olahraga Indonesia',
-                description: 'Pencapaian atlet nasional di kancah internasional'
-            },
-            {
-                image: 'images/sports2.jpg',
-                date: 'Maret 24, 2024',
-                title: 'Kompetisi Olahraga Terkini',
-                description: 'Update pertandingan dan turnamen terbaru'
-            }
-        ]
-    };
-
+async function loadCategoryNews(category) {
     const newsGrid = document.querySelector('.news-grid');
-    const news = newsData[category] || [];
-    
-    if (news.length > 0) {
-        newsGrid.innerHTML = news.map(item => `
-            <article class="news-card">
-                <img src="${item.image}" alt="${item.title}" onerror="this.src='images/default-news.jpg'">
-                <div class="news-content">
-                    <span class="date">${item.date}</span>
-                    <h3>${item.title}</h3>
-                    <p>${item.description}</p>
-                </div>
-            </article>
-        `).join('');
-    } else {
-        newsGrid.innerHTML = '<p class="no-news">Tidak ada berita untuk kategori ini.</p>';
+    newsGrid.innerHTML = '<p class="loading">Loading news...</p>';
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/news/category/${category}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch news');
+        }
+
+        const news = await response.json();
+        
+        if (news.length > 0) {
+            newsGrid.innerHTML = news.map(item => `
+                <article class="news-card">
+                    <img src="${item.image_url || 'images/default-news.jpg'}" alt="${item.title}" onerror="this.src='images/default-news.jpg'">
+                    <div class="news-content">
+                        <span class="date">${new Date(item.created_at).toLocaleDateString('id-ID', { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        })}</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.content.substring(0, 150)}...</p>
+                        <a href="/detail-berita.html?slug=${item.slug}" class="read-more">Baca Selengkapnya</a>
+                    </div>
+                </article>
+            `).join('');
+        } else {
+            newsGrid.innerHTML = '<p class="no-news">Tidak ada berita untuk kategori ini.</p>';
+        }
+    } catch (error) {
+        console.error('Error loading news:', error);
+        newsGrid.innerHTML = '<p class="error">Gagal memuat berita. Silakan coba lagi nanti.</p>';
     }
 }
 
@@ -179,6 +94,20 @@ function filterNews(searchTerm) {
 // Add CSS for loading and error states
 const style = document.createElement('style');
 style.textContent = `
+    .loading {
+        text-align: center;
+        padding: 2rem;
+        color: #666;
+    }
+    
+    .error {
+        text-align: center;
+        padding: 2rem;
+        color: #dc3545;
+        background: #f8d7da;
+        border-radius: 4px;
+    }
+    
     .no-news {
         text-align: center;
         padding: 2rem;

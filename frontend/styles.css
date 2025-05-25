@@ -71,7 +71,7 @@ header {
 /* Hero Section for Homepage */
 .hero-home {
     position: relative;
-    background: url('bg.png') center center/cover no-repeat;
+    background: url('img/bg.png') center center/cover no-repeat;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -297,7 +297,7 @@ header {
 
 .about-hero {
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/office-background.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/office-background.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -538,7 +538,7 @@ header {
 /* News Page Styles */
 .news-hero {
     height: 60vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/news-bg.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/news-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;

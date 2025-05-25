@@ -6,7 +6,7 @@ const userRoutes = require('./src/routes/user');
 const newsRoutes = require('./src/routes/news');
 const categoryRoutes = require('./src/routes/category');
 const commentRoutes = require('./src/routes/comment');
-const sequelize = require('./src/config/database'); // <- Tambahkan ini
+const sequelize = require('./src/config/database');
 
 const app = express();
 
@@ -33,7 +33,7 @@ const PORT = process.env.PORT || 3000;
 sequelize.authenticate()
     .then(() => {
         console.log('Database connected...');
-        return sequelize.sync(); // Sinkronisasi model
+        return sequelize.sync();
     })
     .then(() => {
         app.listen(PORT, () => {

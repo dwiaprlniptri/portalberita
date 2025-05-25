@@ -9,7 +9,8 @@
 <body>
   <div class="login-container">
     <h2>Login Admin</h2>
-    <form action="inputberita.html" method="GET">
+    <!-- Ubah di sini -->
+    <form id="login-form">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="Masukkan Email" />
@@ -19,10 +20,12 @@
         <input type="password" id="password" name="password" placeholder="Masukkan Password" />
       </div>
       <button type="submit" class="login-btn">Login</button>
-    </form>
+    </form>    
     <div class="footer">
         Sudah punya akun? <a href="register.html">Registrasi di sini</a><br />
-      </div>
+    </div>
   </div>
+
+  <script src="login.js"></script>
 </body>
 </html>

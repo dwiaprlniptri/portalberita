@@ -69,7 +69,7 @@ header {
 /* Hero Section for Homepage */
 .hero-home {
     position: relative;
-    background: url('bg.png') center center/cover no-repeat;
+    background: url('img/bg.png') center center/cover no-repeat;
     height: 100vh;
     display: flex;
     align-items: center;

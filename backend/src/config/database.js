@@ -9,7 +9,7 @@ const sequelize = new Sequelize(
         host: process.env.DB_HOST || 'localhost',
         dialect: 'mysql',
         logging: false,
-        timezone: '+07:00', // WIB timezone
+        timezone: '+07:00', 
         define: {
             timestamps: true,
             underscored: true
