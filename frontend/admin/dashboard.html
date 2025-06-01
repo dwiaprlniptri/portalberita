@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Portal Berita</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6fa;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+            background: #23272b;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+        .sidebar h2 {
+            margin: 0;
+            padding: 32px 0 24px 32px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .sidebar nav {
+            flex: 1;
+        }
+        .sidebar nav a {
+            display: flex;
+            align-items: center;
+            padding: 16px 32px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background 0.2s;
+        }
+        .sidebar nav a.active, .sidebar nav a:hover {
+            background: #3a3f44;
+        }
+        .main {
+            margin-left: 260px;
+            padding: 32px 40px;
+        }
+        .dashboard-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .stat-card {
+            background: #4070f4;
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px 32px;
+            flex: 1;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .stat-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .stat-card .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+        .recent-table {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            padding: 24px;
+        }
+        .recent-table h4 {
+            margin: 0 0 16px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+        }
+        th {
+            background: #f4f6fa;
+            font-weight: 600;
+        }
+        tr:not(:last-child) {
+            border-bottom: 1px solid #e0e6ed;
+        }
+        .status-published {
+            background: #4caf50;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+        .status-pending {
+            background: #ffc107;
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+        .action-btn {
+            border: none;
+            outline: none;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-right: 6px;
+        }
+        .edit-btn {
+            background: #2196f3;
+            color: #fff;
+        }
+        .delete-btn {
+            background: #f44336;
+            color: #fff;
+        }
+        .create-btn {
+            background: #4caf50;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        @media (max-width: 900px) {
+            .main { padding: 24px 8px; }
+            .stats { flex-direction: column; gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <nav>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="#">News Management</a>
+            <a href="users.html">Users</a>
+            <a href="#" id="logout-link">Logout</a>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="dashboard-title">Dashboard</div>
+        <div class="stats">
+            <div class="stat-card">
+                <h3>Total News</h3>
+                <div class="stat-value" id="total-news">120</div>
+            </div>
+            <div class="stat-card">
+                <h3>Today's News</h3>
+                <div class="stat-value" id="todays-news">8</div>
+            </div>
+            <div class="stat-card">
+                <h3>Active Users</h3>
+                <div class="stat-value" id="active-users">34</div>
+            </div>
+            <div class="stat-card">
+                <h3>Pending News</h3>
+                <div class="stat-value" id="pending-news">5</div>
+            </div>
+        </div>
+        <div class="recent-table">
+            <h4>Recent News</h4>
+            <button id="create-news-btn" class="action-btn create-btn">+ Create News</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>News ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="news-table-body">
+                    <!-- News rows will be inserted here by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html> 

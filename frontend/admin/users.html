@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage Users</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#">News Management</a>
+            <a href="users.html" class="active">Users</a>
+            <a href="#" id="logout-link">Logout</a>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="dashboard-title">Users Management</div>
+        <div class="recent-table">
+            <h4>Users List</h4>
+            <button id="create-user-btn" class="action-btn create-btn">+ Create User</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="users-table-body">
+                    <!-- Users will be loaded here by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="users.js"></script>
+</body>
+</html> 

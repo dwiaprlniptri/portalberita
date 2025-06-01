@@ -17,7 +17,7 @@ document.getElementById('login-form').addEventListener('submit', async function 
       const data = await response.json();
       localStorage.setItem('token', data.token);
       alert('Login berhasil');
-      window.location.href = 'inputberita.html';
+      window.location.href = 'dashboard.html';
     } else {
       // Jika server salah atau kirim HTML
       const text = await response.text();
