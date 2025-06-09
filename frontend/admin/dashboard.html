@@ -150,7 +150,6 @@
         <h2>Admin Panel</h2>
         <nav>
             <a href="dashboard.html" class="active">Dashboard</a>
-            <a href="#">News Management</a>
             <a href="users.html">Users</a>
             <a href="#" id="logout-link">Logout</a>
         </nav>
@@ -191,6 +190,20 @@
                 </thead>
                 <tbody id="news-table-body">
                     <!-- News rows will be inserted here by JS -->
+                    <tr>
+                        <td>#1</td>
+                        <td>Sample News</td>
+                        <td>Admin</td>
+                        <td>2023-10-01</td>
+                        <td>
+                            <button onclick="ubahStatus(1, 'draft')">Set to Draft</button>
+                            <button onclick="ubahStatus(1, 'published')">Set to Published</button>
+                        </td>
+                        <td>
+                            <button class="action-btn edit-btn" onclick="editNews(1)">Edit</button>
+                            <button class="action-btn delete-btn" onclick="deleteNews(1)">Delete</button>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -1,3 +1,25 @@
+function ubahStatus(newsId, status) {
+    fetch(`http://localhost:3000/api/news/${newsId}/status`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token'),
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ status })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data) {
+            alert('Status updated successfully!');
+        } else {
+            alert('Failed to update status: ' + data.message);
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error.message);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     fetchNews();
 
@@ -10,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token')
             }
+    
         })
             .then(res => res.json())
             .then(newsList => {
@@ -47,9 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${news.user ? news.user.username : '-'}</td>
                 <td>${news.created_at ? news.created_at.substring(0, 10) : '-'}</td>
                 <td>
-                    <span class="${news.status === 'published' ? 'status-published' : 'status-pending'}">
-                        ${news.status}
-                    </span>
+                    <select class="status-select" onchange="ubahStatus(${news.id_news}, this.value)">
+                        <option value="draft" ${news.status === 'draft' ? 'selected' : ''}>Draft</option>
+                        <option value="published" ${news.status === 'published' ? 'selected' : ''}>Published</option>
+                    </select>
                 </td>
                 <td>
                     <button class="action-btn edit-btn" onclick="editNews(${news.id_news})">Edit</button>

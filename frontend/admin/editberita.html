@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit News - Admin Portal</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="editberita.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <nav>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="createnews.html">Create News</a>
+            <a href="editberita.html" class="active">Edit News</a>
+            <a href="users.html">Users</a>
+            <a href="#" id="logout-link">Logout</a>
+        </nav>
+    </div>
+    <div class="main">
+        <div class="edit-news-title">Edit News</div>
+        <div class="form-container">
+            <form id="edit-news-form">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="budaya">Budaya</option>
+                        <option value="pendidikan">Pendidikan</option>
+                        <option value="politik">Politik</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="fenomena alam">Fenomena Alam</option>
+                        <option value="teknologi">Teknologi</option>
+                        <option value="olahraga">Olahraga</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+                <button type="submit" class="submit-btn">Update News</button>
+            </form>
+        </div>
+    </div>
+    <script src="editberita.js"></script>
+</body>
+</html> 

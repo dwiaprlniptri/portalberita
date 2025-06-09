@@ -6,7 +6,8 @@ const {
     getAllNewsAdmin,
     createNews,
     updateNews,
-    deleteNews
+    deleteNews,
+    updateStatus
 } = require('../controllers/newsController');
 const { user, adminOnly } = require('../middleware/user');
 
@@ -19,5 +20,6 @@ router.get('/admin/all', user, adminOnly, getAllNewsAdmin);
 router.post('/', user, createNews);
 router.put('/:id', user, updateNews);
 router.delete('/:id', user, deleteNews);
+router.put('/:id/status', user, updateStatus);
 
 module.exports = router; 

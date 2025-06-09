@@ -6,7 +6,7 @@ const Category = require('../models/category');
 exports.getAllNews = async (req, res) => {
     try {
         const news = await News.findAll({
-            where: { status: 'published' },
+           // where: { status: 'published' },
             include: [
                 { model: User, as: 'user', attributes: ['id_user', 'username'] },
                 { model: Category, as: 'category', attributes: ['id_category', 'name_category', 'slug'] }
@@ -117,6 +117,21 @@ exports.deleteNews = async (req, res) => {
 
         await news.destroy();
         res.json({ message: 'News deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+exports.updateStatus = async (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+    try {
+        const news = await News.findByPk(id);
+        if (!news) {
+            return res.status(404).json({ message: 'News not found' });
+        }
+        await news.update({ status });
+        res.json(news);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
