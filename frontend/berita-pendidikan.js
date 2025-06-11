@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <span class="date">${date || ' '}</span>
                                 <h3>${news.title}</h3>
                                 <p>${truncateText(news.content)}</p>
+                                <div class="button-container">
+                                    <a href="berita-detail.html?id=${news.id_news}" class="read-more-button">Baca selengkapnya</a>
+                                </div>
                             </div>
                         </article>
                         `;

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Berita - PT. WINNICODE GARUDA TEKNOLOGI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="berita.css">
+    <style>
+        .news-detail {
+            padding: 3rem 0;
+        }
+
+        .news-detail .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .news-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .news-header .category {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color, #007bff);
+            color: #fff;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-meta i {
+            color: var(--primary-color, #007bff);
+        }
+
+        .news-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .news-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .news-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .news-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .news-tags {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .news-tags h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .tag:hover {
+            background-color: #e0e0e0;
+        }
+
+        .related-news {
+            margin-top: 4rem;
+        }
+
+        .related-news h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .related-news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .news-header h1 {
+                font-size: 2rem;
+            }
+
+            .news-image {
+                height: 300px;
+            }
+
+            .news-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="transparent-navbar" style="background: rgba(29, 50, 68, 0.7);">
+        <nav class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/WinniCode.png" alt="Winni Code">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Beranda</a>
+                <a href="berita.html" class="active">Berita</a>
+                <a href="tentang.html">Tentang</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="news-detail">
+            <div class="container">
+                <div class="news-header">
+                    <span class="category" id="news-category">Kategori</span>
+                    <h1 id="news-title">Judul Berita</h1>
+                    <div class="news-meta">
+                        <span><i class="fas fa-user"></i> <span id="news-author">Penulis</span></span>
+                        <span><i class="fas fa-calendar"></i> <span id="news-date">Tanggal</span></span>
+                        <span><i class="fas fa-eye"></i> <span id="news-views">0</span> views</span>
+                    </div>
+                </div>
+                <img id="news-image" src="" alt="News Image" class="news-image">
+                <div class="news-content" id="news-content">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+                <div class="news-tags">
+                    <h3>Tags</h3>
+                    <div class="tags" id="news-tags">
+                        <!-- Tags will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="related-news">
+            <div class="container">
+                <h2>Berita Terkait</h2>
+                <div class="related-news-grid" id="related-news">
+                    <!-- Related news will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="dark-footer" style="position: static; background-color: #000;">
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logos">
+                    <img src="img/WinniCode.png" alt="Winni Code" class="footer-logo">
+                    <img src="img/kampusmerdeka.png" alt="Kampus Merdeka" class="footer-logo">
+                </div>
+                <p>Jurnalistik Program winnicode adalah program pengembangan sumber daya manusia yang ditujukan bagi pemuda pemudi yang berkarir di dunia report.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Sitemap</h4>
+                    <nav>
+                        <a href="index.html">Beranda</a>
+                        <a href="berita.html">Berita</a>
+                        <a href="tentang.html">Tentang</a>
+                    </nav>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Kami</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> winnicodegartudaofficial@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Alamat (Pusat): Bandung - Jl. Asia Afrika No.158, Kb. Pisang, Kec. Sumur Bandung, Kota Bandung, Jawa Barat 40261</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Alamat (Cabang): Bantul/Yogyakarta</p>
+                        <p><i class="fas fa-phone"></i> +62 851599325201 (24 Jam)</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Tautan</h4>
+                    <nav class="social-links">
+                        <a href="https://winnicode.com/"><i class="fas fa-globe"></i> Winnicode</a>
+                        <a href="https://www.instagram.com/winnicodeofficial/"><i class="fab fa-instagram"></i> Instagram</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 PT. WINNICODE GARUDA TEKNOLOGI</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to format date
+        function formatDate(dateString) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateString).toLocaleDateString('id-ID', options);
+        }
+
+        // Function to load news detail
+        async function loadNewsDetail() {
+            const newsId = getUrlParameter('id');
+            if (!newsId) {
+                window.location.href = 'berita.html';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/news/${newsId}`);
+                const news = await response.json();
+                console.log(news);
+
+                // Update page title
+                document.title = `${news.title} - PT. WINNICODE GARUDA TEKNOLOGI`;
+
+                // Update news content
+                document.getElementById('news-title').textContent = news.title;
+                document.getElementById('news-category').textContent = news.category ? news.category.name_category : 'Uncategorized';
+                document.getElementById('news-author').textContent = news.user ? news.user.username : 'Unknown';
+                document.getElementById('news-date').textContent = formatDate(news.created_at);
+                document.getElementById('news-views').textContent = news.views || 0;
+                document.getElementById('news-image').src = news.image_url || 'img/default-news.jpg';
+                document.getElementById('news-image').alt = news.title;
+                document.getElementById('news-content').innerHTML = news.content;
+
+                // Load related news
+                loadRelatedNews(news.category ? news.category.id_category : null, newsId);
+
+            } catch (error) {
+                console.error('Error loading news:', error);
+                alert('Terjadi kesalahan saat memuat berita');
+            }
+        }
+
+        // Function to load related news
+        async function loadRelatedNews(categoryId, currentNewsId) {
+            try {
+                const response = await fetch(`http://localhost:3000/api/news/category/${categoryId}`);
+                const relatedNews = await response.json();
+
+                const relatedNewsContainer = document.getElementById('related-news');
+                relatedNewsContainer.innerHTML = '';
+
+                // Filter out current news and limit to 3 related news
+                const filteredNews = relatedNews
+                    .filter(news => news.id_news !== parseInt(currentNewsId))
+                    .slice(0, 3);
+
+                filteredNews.forEach(news => {
+                    const newsCard = document.createElement('div');
+                    newsCard.className = 'news-card';
+                    newsCard.innerHTML = `
+                        <img src="${news.image_url || 'img/default-news.jpg'}" alt="${news.title}">
+                        <div class="news-content">
+                            <span class="date">${formatDate(news.created_at)}</span>
+                            <h3>${news.title}</h3>
+                            <p class="news-description">${news.content.substring(0, 150)}...</p>
+                            <a href="berita-detail.html?id=${news.id_news}" class="read-more-button">Baca selengkapnya</a>
+                        </div>
+                    `;
+                    relatedNewsContainer.appendChild(newsCard);
+                });
+
+            } catch (error) {
+                console.error('Error loading related news:', error);
+            }
+        }
+
+        // Load news detail when page loads
+        document.addEventListener('DOMContentLoaded', loadNewsDetail);
+    </script>
+</body>
+</html> 

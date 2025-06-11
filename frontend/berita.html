@@ -76,7 +76,9 @@
             <p class="news-description">
               Deskripsi berita yang cukup panjang untuk menunjukkan bagaimana teks akan dipotong setelah 3 baris, dan bisa dibuka dengan tombol.
             </p>
+            <div class="button-container">
             <a href="berita-detail.html?id=123" class="read-more-button">Baca selengkapnya</a>
+            </div>
         </div>
           </div>
         </div>
@@ -86,6 +88,13 @@
   </div>
 </section>
 
+<!-- Search Results Section -->
+<section class="search-results" style="display: none;">
+    <div class="container">
+        <h2>Hasil Pencarian</h2>
+        <div class="news-grid"></div>
+    </div>
+</section>
 
     <footer class="dark-footer" style="position: static; background-color: #000;">
         <div class="footer-content">
@@ -153,5 +162,6 @@
     });
     });
     </script>
-
+    <script src="js/search.js"></script>
 </body>
+</html>
