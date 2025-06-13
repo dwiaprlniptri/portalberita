@@ -3,6 +3,7 @@ const router = express.Router();
 const { 
     getAllNews, 
     getNewsBySlug, 
+    getNewsById,
     getAllNewsAdmin,
     createNews,
     updateNews,
@@ -13,7 +14,7 @@ const { user, adminOnly } = require('../middleware/user');
 
 // Public routes
 router.get('/', getAllNews);
-router.get('/:slug', getNewsBySlug);
+router.get('/id/:id', getNewsById);
 
 // Protected routes
 router.get('/admin/all', user, adminOnly, getAllNewsAdmin);

@@ -19,14 +19,11 @@ exports.getAllNews = async (req, res) => {
     }
 };
 
-// Get news by slug
-exports.getNewsBySlug = async (req, res) => {
+
+// Get news by ID
+exports.getNewsById = async (req, res) => {
     try {
-        const news = await News.findOne({
-            where: { 
-                slug: req.params.slug,
-                status: 'published'
-            },
+        const news = await News.findByPk(req.params.id, {
             include: [
                 { model: User, as: 'user', attributes: ['id_user', 'username'] },
                 { model: Category, as: 'category', attributes: ['id_category', 'name_category', 'slug'] }
